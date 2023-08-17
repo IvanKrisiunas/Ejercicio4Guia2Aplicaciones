@@ -110,7 +110,7 @@ private DefaultTableModel modelo = new DefaultTableModel(){
         // TODO add your handling code here:
         borrarFilas();
         for (Productos prod : Menu.listaProductos) {
-            if (prod.getRubro()) {
+            if (prod.getRubro()==Categoria.COMESTIBLE || prod.getRubro()==Categoria.PERFUMERIA || prod.getRubro()==Categoria.LIMPIEZA) {
                 modelo.addRow(new Object[]{
                     prod.getCodigo(),
                     prod.getDescripcion(),
