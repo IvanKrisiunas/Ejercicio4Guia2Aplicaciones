@@ -109,16 +109,16 @@ private DefaultTableModel modelo = new DefaultTableModel(){
     private void jcbRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbRubroActionPerformed
         // TODO add your handling code here:
         borrarFilas();
-//        for (Productos prod : Menu.listaProductos) {
-//            if (prod.getRubro()) {
-//                modelo.addRow(new Object[]{
-//                    prod.getCodigo(),
-//                    prod.getDescripcion(),
-//                    prod.getPrecio(),
-//                    prod.getStock()
-//                });
-//            }
-//        }
+        for (Productos prod : Menu.listaProductos) {
+            if (prod.getRubro()) {
+                modelo.addRow(new Object[]{
+                    prod.getCodigo(),
+                    prod.getDescripcion(),
+                    prod.getPrecio(),
+                    prod.getStock()
+                });
+            }
+        }
     }//GEN-LAST:event_jcbRubroActionPerformed
 
 
