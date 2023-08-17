@@ -5,17 +5,27 @@
  */
 package ejercicio4guia2aplicaciones;
 
+import java.awt.event.KeyEvent;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Monica
  */
 public class BusquedaPorPrecio extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int f, int c) {
+            return false;
+        }
+    };
+
     /**
      * Creates new form BusquedaPorPrecio
      */
     public BusquedaPorPrecio() {
         initComponents();
+        armarCabecera();
     }
 
     /**
@@ -29,12 +39,48 @@ public class BusquedaPorPrecio extends javax.swing.JInternalFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        JTPrecio1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        JTPrecio2 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JTablaPrecio = new javax.swing.JTable();
+
+        setClosable(true);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Listado Por Precio");
 
         jLabel1.setText("Entre $:");
+
+        jLabel3.setText("y");
+
+        JTPrecio2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTPrecio2ActionPerformed(evt);
+            }
+        });
+        JTPrecio2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JTPrecio2KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTPrecio2KeyReleased(evt);
+            }
+        });
+
+        JTablaPrecio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(JTablaPrecio);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -43,28 +89,92 @@ public class BusquedaPorPrecio extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel1)))
-                .addContainerGap(117, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(JTPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(JTPrecio2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addComponent(jLabel2)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 17, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1)
-                .addGap(0, 210, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(JTPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(JTPrecio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void JTPrecio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTPrecio2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTPrecio2ActionPerformed
+
+    private void JTPrecio2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTPrecio2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTPrecio2KeyPressed
+
+    private void JTPrecio2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTPrecio2KeyReleased
+        // TODO add your handling code here:
+        borrarFilas();
+        int num1 = Integer.parseInt(JTPrecio1.getText());
+        int num2 = Integer.parseInt(JTPrecio2.getText());
+        double num12 = num1;
+        double num22 = num2;
+            for (Productos prod : Menu.listaProductos) {
+                if (prod.getPrecio() <= num12 && prod.getPrecio() >= num22) {
+                    modelo.addRow(new Object[]{
+                        prod.getCodigo(),
+                        prod.getDescripcion(),
+                        prod.getPrecio(),
+                        prod.getStock()
+                    });
+                }
+            }
+    }//GEN-LAST:event_JTPrecio2KeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField JTPrecio1;
+    private javax.swing.JTextField JTPrecio2;
+    private javax.swing.JTable JTablaPrecio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+private void armarCabecera() {
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Descricion");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Stock");
+        JTablaPrecio.setModel(modelo);
+    }
+
+    private void borrarFilas() {
+        int f = JTablaPrecio.getRowCount() - 1;
+        for (; f >= 0; f--) {
+            modelo.removeRow(f);
+        }
+    }
 }
