@@ -113,7 +113,8 @@ private DefaultTableModel modelo = new DefaultTableModel(){
 
     private void jcbRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbRubroActionPerformed
         // TODO add your handling code here:
-        borrarFilas();
+                    borrarFilas();
+
         for (Productos prod : Menu.listaProductos) {
             if (prod.getRubro()==Categoria.COMESTIBLE) {
                 modelo.addRow(new Object[]{
@@ -122,6 +123,8 @@ private DefaultTableModel modelo = new DefaultTableModel(){
                     prod.getPrecio(),
                     prod.getStock()
                 });
+                        
+
             }else if (prod.getRubro()==Categoria.PERFUMERIA) {
                 modelo.addRow(new Object[]{
                     prod.getCodigo(),
