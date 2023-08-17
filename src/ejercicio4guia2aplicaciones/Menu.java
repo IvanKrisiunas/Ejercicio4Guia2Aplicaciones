@@ -61,8 +61,18 @@ public static TreeSet<Productos> listaProductos=new TreeSet<> ();
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Consultas");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
 
         jMenuItem2.setText("Por Rubro");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuItem3.setText("Por Nombre");
@@ -107,7 +117,10 @@ public static TreeSet<Productos> listaProductos=new TreeSet<> ();
         bpn.setVisible(true);
         Escritorio.add(bpn);
         Escritorio.moveToFront(bpn);
+        
+        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
@@ -118,6 +131,21 @@ public static TreeSet<Productos> listaProductos=new TreeSet<> ();
         Escritorio.add(bpp);
         Escritorio.moveToFront(bpp);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        BusquedaPorRubro bpr = new BusquedaPorRubro();
+        bpr.setVisible(true);
+        Escritorio.add(bpr);
+        Escritorio.moveToFront(bpr);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
