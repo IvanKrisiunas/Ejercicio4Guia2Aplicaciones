@@ -50,6 +50,11 @@ private DefaultTableModel modelo = new DefaultTableModel(){
 
         jcbRubro.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jcbRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comestible", "Perfumeria", "Limpieza" }));
+        jcbRubro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcbRubroMouseClicked(evt);
+            }
+        });
         jcbRubro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbRubroActionPerformed(evt);
@@ -110,7 +115,21 @@ private DefaultTableModel modelo = new DefaultTableModel(){
         // TODO add your handling code here:
         borrarFilas();
         for (Productos prod : Menu.listaProductos) {
-            if (prod.getRubro()==Categoria.COMESTIBLE || prod.getRubro()==Categoria.PERFUMERIA || prod.getRubro()==Categoria.LIMPIEZA) {
+            if (prod.getRubro()==Categoria.COMESTIBLE) {
+                modelo.addRow(new Object[]{
+                    prod.getCodigo(),
+                    prod.getDescripcion(),
+                    prod.getPrecio(),
+                    prod.getStock()
+                });
+            }else if (prod.getRubro()==Categoria.PERFUMERIA) {
+                modelo.addRow(new Object[]{
+                    prod.getCodigo(),
+                    prod.getDescripcion(),
+                    prod.getPrecio(),
+                    prod.getStock()
+                });
+            }else{
                 modelo.addRow(new Object[]{
                     prod.getCodigo(),
                     prod.getDescripcion(),
@@ -120,6 +139,10 @@ private DefaultTableModel modelo = new DefaultTableModel(){
             }
         }
     }//GEN-LAST:event_jcbRubroActionPerformed
+
+    private void jcbRubroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbRubroMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbRubroMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
