@@ -12,5 +12,5 @@ package ejercicio4guia2aplicaciones;
 public enum Categoria {
     COMESTIBLE,
     LIMPIEZA,
-    PERFUMERIA,
+    PERFUMERIA
 }
