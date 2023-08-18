@@ -156,6 +156,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 public void agregarProductos(){
    
-  //  listaProductos.add(new Productos(Integer.parseInt(jtCodigo.getText()), jtDescripcion.getText(), Integer.parseInt(jtPrecio.getText()), Integer.parseInt(jtStock.getText()), Categoria);
+  listaProductos.add(new Productos(Integer.parseInt(jtCodigo.getText()), jtDescripcion.getText(), Integer.parseInt(jtPrecio.getText()), Integer.parseInt(jtStock.getText()), (Categoria) jcRubro.getSelectedItem()));
 }
 }

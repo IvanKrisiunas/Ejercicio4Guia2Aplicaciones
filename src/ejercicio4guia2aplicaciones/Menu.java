@@ -40,7 +40,6 @@ public static TreeSet<Productos> listaProductos=new TreeSet<> ();
         jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 600));
 
         Escritorio.setPreferredSize(new java.awt.Dimension(700, 600));
 
@@ -58,6 +57,11 @@ public static TreeSet<Productos> listaProductos=new TreeSet<> ();
         jMenu1.setText("Administracion");
 
         jMenuItem1.setText("Productos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -148,6 +152,16 @@ public static TreeSet<Productos> listaProductos=new TreeSet<> ();
         Escritorio.add(bpr);
         Escritorio.moveToFront(bpr);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+         Escritorio.removeAll();
+        Escritorio.repaint();
+        GestionDeProductos gdp = new GestionDeProductos();
+        gdp.setVisible(true);
+        Escritorio.add(gdp);
+        Escritorio.moveToFront(gdp);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
